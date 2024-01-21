@@ -27,8 +27,9 @@
 				"ms-toolsai.jupyter-keymap",
 				"ms-toolsai.jupyter-renderers",
 				"ms-toolsai.vscode-jupyter-cell-tags",
-				"ms-python.python"
-
+				"ms-python.python",
+				"GitHub.vscode-pull-request-github",
+				"ms-python.vscode-pylance"
 			]
 		}
 	}

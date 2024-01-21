@@ -8,7 +8,8 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
         --no-install-recommends \
         gnupg gnupg2 gnupg1 \
-        software-properties-common
+        software-properties-common \
+        openssh-client
 
 # Add deadsnakes PPA
 RUN add-apt-repository ppa:deadsnakes
