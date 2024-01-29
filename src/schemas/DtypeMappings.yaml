@@ -14,3 +14,7 @@ mappings:
     duckdb_dtype: TIMESTAMP
   - pandas_dtype: timedelta64[ns]
     duckdb_dtype: INTERVAL
+  - pandas_dtype: object
+    duckdb_dtype: VARCHAR
+  - pandas_dtype: string
+    duckdb_dtype: VARCHAR
