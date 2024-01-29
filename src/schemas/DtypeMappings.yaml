@@ -1,0 +1,16 @@
+# Contains the SQL schema mapping used to convert Pandas Dtypes to DuckDB SQL Types
+mappings:
+  - pandas_dtype: int64
+    duckdb_dtype: BIGINIT
+  - pandas_dtype: int32
+    duckdb_dtype: INTEGER
+  - pandas_dtype: float64
+    duckdb_dtype: DOUBLE
+  - pandas_dtype: float32
+    duckdb_dtype: FLOAT
+  - pandas_dtype: bool
+    duckdb_dtype: BOOLEAN
+  - pandas_dtype: datetime64[ns]
+    duckdb_dtype: TIMESTAMP
+  - pandas_dtype: timedelta64[ns]
+    duckdb_dtype: INTERVAL
