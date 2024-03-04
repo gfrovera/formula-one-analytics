@@ -1,7 +1,7 @@
 # Contains the SQL schema mapping used to convert Pandas Dtypes to DuckDB SQL Types
 mappings:
   - pandas_dtype: int64
-    duckdb_dtype: BIGINIT
+    duckdb_dtype: BIGINT
   - pandas_dtype: int32
     duckdb_dtype: INTEGER
   - pandas_dtype: float64
