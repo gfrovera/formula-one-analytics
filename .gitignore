@@ -1,1 +1,4 @@
 .dotenv
+.venv
+.secrets
+*.code-workspace
