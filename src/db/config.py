@@ -9,12 +9,21 @@ load_dotenv()
 
 @dataclass(frozen=True)
 class DatabaseSettings:
+    '''
+    This is a container for all connection parameters.
+    
+    - The `frozen=True` makes it immutable (can't be changed after creation),
+    which is a good practice for configuration objects—you don't want something
+    accidentally modifying your database credentials mid-execution.
+
+    - The @property method url constructs a SQLalchemy connection string
+    '''
     user: str
     password: str
-    host: str = 'localhost'
-    port: int = 5432
-    name: str = 'f1db'
-    echo: bool = False
+    host: str
+    port: int
+    name: str
+    echo: bool
 
     @property
     def url(self) -> str:
@@ -26,14 +35,22 @@ class DatabaseSettings:
     
 
 def get_db_settings() -> DatabaseSettings:
-    '''Read DB settings from environment variables
+    '''
+    Read DB settings from environment variables
+
+    All values must be defined in the environment (or .env file)
+    Raises KeyError if any required variable is missing
     '''
 
     return DatabaseSettings(
-        user=os.getenv('DB_USER', 'f1user'),
+        user=os.environ['DB_USER'],
         password=os.environ['DB_PASSWORD'],
-        host=os.getenv('DB_HOST', 'localhost'),
-        port=int(os.getenv('DB_PORT', '5432')),
-        name=os.getenv('DB_NAME', 'f1db'),
-        echo=os.getenv('DB_ECHO', 'false').lower() == 'true',
+        host=os.environ['DB_HOST'],
+        port=int(os.environ['DB_PORT']),
+        name=os.environ['DB_NAME'],
+        echo=os.environ['DB_ECHO'].lower() == 'true',
     )
+
+
+if __name__ == '__main__':
+    raise SystemExit()
