@@ -3,4 +3,4 @@
 .secrets
 *.code-workspace
 .env
-__pycache__
+__pycache__/
