@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from pandas import DataFrame
 from sqlalchemy import insert
+from sqlalchemy import text
 
 from .session import engine
 from .types import FormulaOneTableSchema
@@ -9,6 +10,15 @@ from .types import FormulaOneTableSchema
 
 class DataLoaders:
 
+
+    def truncate_table(self, model_class: FormulaOneTableSchema) -> None:
+        '''Truncate (empty) a table. Use with caution'''
+        table_name = model_class.__tablename__
+        with engine.begin() as conn:
+            conn.execute(text(
+                f'TRUNCATE TABLE {table_name} RESTART IDENTITY CASCADE')
+                )
+        
 
     def clean_df_for_insert(self, df: DataFrame) -> DataFrame:
         '''Clean DataFrame for PostgreSQL insertion.'''
@@ -50,6 +60,8 @@ class DataLoaders:
 
         return total
     
+data_loader = DataLoaders()
 
-if __name__ == '__main__':
-    raise SystemExit()
+
+# if __name__ == '__main__':
+#     raise SystemExit()
